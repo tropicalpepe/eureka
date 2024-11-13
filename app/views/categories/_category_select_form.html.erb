@@ -1,0 +1,11 @@
+<turbo-frame id="category-select-form">
+  <div data-controller="category-select">
+    <%= form_with url: root_path, method: :get, html: { id: "category-form" } do |form| %>
+      <%= form.select :category,
+                      [["All", "all", { data: { url: root_path } }]] +
+                        @categories.map { |c| [c.name, c.id, { data: { url: category_ideas_path(c) } }] },
+                      { selected: selected_category_id },
+                      id: "category-select", data: { action: "change->category-select#navigate" } %>
+    <% end %>
+  </div>
+</turbo-frame>

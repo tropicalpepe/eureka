@@ -1,0 +1,16 @@
+<%= render 'categories/category_select_form', categories: @categories, selected_category_id: @selected_category_id %>
+
+<div class="flex items-center gap-4 border rounded-full w-max px-6 my-4 bg-white">
+  <p class="text-xl py-5"><%= @category.name %></p>
+  <span class="h-4 w-4 rounded-full" style="background-color: <%= @category.color %>;"></span>
+</div>
+
+<% @ideas.each do |idea| %>
+  <div class="flex flex-col justify-between flex- gap-10 flex-1 border rounded-xl p-4 bg-white">
+    <p class="text-2xl"><%= idea.title %></p>
+    <p><%= idea.description %></p>
+    <div class="flex flex-row-reverse">
+      <p><%= idea.created_at.strftime("%d/%m/%Y") %></p>
+    </div>
+  </div>
+<% end %>

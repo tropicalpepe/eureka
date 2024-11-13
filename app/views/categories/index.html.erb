@@ -1,0 +1,35 @@
+<div class="flex items-center">
+  <%= render 'categories/category_select_form', categories: @categories, selected_category_id: @selected_category_id %>
+  <%= link_to "New category", new_category_path, data: { turbo_frame: 'modal' } %>
+</div>
+
+
+<div class="flex flex-col gap-10">
+  <% @categories.each do |category| %>
+    <div class="rounded-xl p-5 bg-gray-100">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4 border rounded-full w-max px-6 my-4 bg-white">
+          <p class="text-xl py-5"><%= category.name %></p>
+          <span class="h-4 w-4 rounded-full" style="background-color: <%= category.color %>;"></span>
+        </div>
+        <%= link_to new_category_idea_path(category.id) do %>
+          <div class="rounded-full p-2">
+            <%= svg_icon('plus', width: '30', height: '30') %>
+          </div>
+        <% end %>
+      </div>
+      <div class="flex gap-10">
+        <% category.ideas.each do |idea|  %>
+          <div class="flex flex-col justify-between flex- gap-10 flex-1 border rounded-xl p-4 bg-white">
+            <p class="text-2xl"><%= idea.title %></p>
+            <p><%= idea.description %></p>
+            <div class="flex flex-row-reverse">
+              <p><%= idea.created_at.strftime("%d/%m/%Y") %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<%= form_with model: [@category, @category.ideas.build] do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.textarea :description %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="absolute z-2 h-full w-full bg-gray-400/50 flex justify-center">
+    <div class="border rounded-xl p-10 bg-white w-[400px] h-max my-10">
+     <%= form_with model: @category, class: "flex flex-col gap-10" do |form| %>
+       <div class="field flex-1">
+         <%= form.label :name %>
+         <%= form.text_field :name, class: "rounded w-full" %>
+         <% @category.errors.full_messages_for(:name).each do |error_message| %>
+           <div class="text-red-500"><%= error_message %></div>
+         <% end %>
+       </div>
+       <div class="field flex-1">
+         <%= form.label :color %>
+         <%= form.text_field :color, class: "rounded w-full" %>
+         <% @category.errors.full_messages_for(:color).each do |error_message| %>
+           <div class="text-red-500"><%= error_message %></div>
+         <% end %>
+       </div>
+       <%= form.submit %>
+     <% end %>
+    </div>
+
+  </div>
+<% end %>
